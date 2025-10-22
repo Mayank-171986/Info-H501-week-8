@@ -26,9 +26,7 @@ class MarkovText(object):
 
         return None
     
-    text_gen = MarkovText(corpus)
 
-    text_gen.get_term_dict()
 
 
     def generate(self, seed_term=None, term_count=15):
@@ -65,9 +63,7 @@ class MarkovText(object):
 
         return ' '.join(output)
 
-    text_gen = MarkovText(corpus)
-    text_gen.get_term_dict()
-    text_gen.generate()
+   
 
 
         
