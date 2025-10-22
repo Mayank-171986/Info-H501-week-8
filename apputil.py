@@ -22,7 +22,7 @@ class MarkovText(object):
             next_token = self.corpus[i + 1]
             term_dict[current_token].append(next_token)
 
-        self.term_dict = {}
+        self.term_dict = dict(term_dict)
 
         return None
     
