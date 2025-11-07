@@ -10,7 +10,6 @@ class MarkovText(object):
 
     def get_term_dict(self):
 
-        # your code here ...
         ''' Build a term dictionary of Markov States where each key is token from the corpus , 
         and each value is a list of tokens directly follows the key in the corpus.
          The resulting term dictionary is stored in the self.term_dict.
@@ -18,10 +17,8 @@ class MarkovText(object):
         
         term_dict = defaultdict(list)
 
-        term_dict = defaultdict(list)
-
         # Filter out punctuation-only tokens
-        cleaned_corpus = [t for t in self.corpus if re.match(r'\w+', t)]
+        cleaned_corpus = [t for t in self.corpus if re.match(r'\w+$', t)]
 
         for i in range(len(cleaned_corpus) - 1):
             current_token = cleaned_corpus[i]
