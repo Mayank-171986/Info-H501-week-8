@@ -1,5 +1,6 @@
 from collections import defaultdict
 import re
+import numpy as np
 
 
 class MarkovText(object):
@@ -18,7 +19,7 @@ class MarkovText(object):
         term_dict = defaultdict(list)
 
         # Filter out punctuation-only tokens
-        cleaned_corpus = [t for t in self.corpus if re.match(r'\w+$', t)]
+        cleaned_corpus = self.corpus.lower().split()
 
         for i in range(len(cleaned_corpus) - 1):
             current_token = cleaned_corpus[i]
@@ -40,7 +41,8 @@ class MarkovText(object):
         term_count (int): Number of tokens to generate.
         Returns: A string representing the generated text.'''
         
-        # your code here ...
+        seed_term = seed_term.lower()
+        
         if self.term_dict is None:
             raise ValueError("Term dictionary not initialized. Call get_term_dict() first.")
 
