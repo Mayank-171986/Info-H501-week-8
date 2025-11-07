@@ -17,17 +17,19 @@ class MarkovText(object):
         
         term_dict = defaultdict(list)
 
-        for i in range(len(self.corpus) - 1):
-            current_token = self.corpus[i]
-            next_token = self.corpus[i + 1]
+        term_dict = defaultdict(list)
+
+        # Filter out punctuation-only tokens
+        cleaned_corpus = [t for t in self.corpus if re.match(r'\w+', t)]
+
+        for i in range(len(cleaned_corpus) - 1):
+            current_token = cleaned_corpus[i]
+            next_token = cleaned_corpus[i + 1]
             term_dict[current_token].append(next_token)
 
         self.term_dict = dict(term_dict)
-
         return None
     
-
-
 
     def generate(self, seed_term=None, term_count=15):
 
