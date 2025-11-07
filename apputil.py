@@ -41,15 +41,13 @@ class MarkovText(object):
         term_count (int): Number of tokens to generate.
         Returns: A string representing the generated text.'''
         
-        seed_term = seed_term.lower()
-        
         if self.term_dict is None:
             raise ValueError("Term dictionary not initialized. Call get_term_dict() first.")
 
         if seed_term:
             if seed_term not in self.term_dict:
                 raise ValueError(f"Seed term '{seed_term}' not found in corpus.")
-            current_term = seed_term
+            current_term = seed_term.lower()
         else:
             current_term = np.random.choice(list(self.term_dict.keys()))
 
